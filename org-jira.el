@@ -1734,7 +1734,7 @@ that should be bound to an issue."
   (let* ((project-components (jiralib-get-components project))
          (jira-users (org-jira-get-assignable-users project))
          (user (completing-read "Assignee: " (mapcar 'car jira-users)))
-         (priority (car (rassoc (org-jira-read-priority) (jiralib-get-priorities))))
+         ;; (priority (car (rassoc (org-jira-read-priority) (jiralib-get-priorities))))
          (ticket-struct
           `((fields
              (project (key . ,project))
@@ -1747,7 +1747,7 @@ that should be bound to an issue."
                                      (format " (subtask of [jira:%s])" parent-id)
                                    "")))
              (description . ,description)
-             (priority (id . ,priority))
+             ;; (priority (id . ,priority))
              (assignee (accountId . ,(or (cdr (assoc user jira-users)) user)))))))
     ticket-struct))
 
